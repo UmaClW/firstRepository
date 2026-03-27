@@ -72,7 +72,6 @@ public static boolean gameStart(boolean a) {
     String startAnswer = "start";
     String stopAnswer = "stop";
     boolean containsStart = lowRegisterAnswer.contains(startAnswer.toLowerCase());
-    boolean containsStop = lowRegisterAnswer.contains(stopAnswer.toLowerCase());
     if (containsStart) {
         System.out.println("Запуск...");
         System.out.println("Приятной игры!");
