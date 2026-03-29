@@ -14,9 +14,9 @@ void main() {
         int correctLettersCount = 0;
         char[] inputLetters = new char[33];
         int k = 0;
+        Scanner console = new Scanner(System.in);
         while (correctLettersCount < gameWord.length() && mistakesCount < 6) {
             System.out.print("Выберите букву: ");
-            Scanner console = new Scanner(System.in);
             String guessLine = console.nextLine();
             char guessLetter = guessLine.toLowerCase().charAt(0);
             boolean containsLetter = gameWord.toLowerCase().contains(guessLine.toLowerCase());
@@ -47,7 +47,7 @@ void main() {
         if (!(correctLettersCount < gameWord.length())) {
             System.out.println("Поздравляю! Вы выиграли!!");
         } else
-            printEnd();
+            printHangman(mistakesCount);
     }
 }
 private static void printHangman(int mistakesCount) {
@@ -117,18 +117,17 @@ private static void printHangman(int mistakesCount) {
                 "┃     / \\                 ┃\n" +
                 "┃_________________________┃");
     }
-}
-
-private static void printEnd() {
-    System.out.println(" _________________________\n" +
-            "┃       ____\t\t      ┃\n" +
-            "┃      |    |\t\t      ┃\n" +
-            "┃      |    O\t\t      ┃\n" +
-            "┃      |   <|>            ┃\n" +
-            "┃      |   / \\            ┃\n" +
-            "┃      |                  ┃\n" +
-            "┃     / \\                 ┃\n" +
-            "┃_________________________┃");
+    if (mistakesCount == 6) {
+        System.out.println(" _________________________\n" +
+                "┃       ____\t\t      ┃\n" +
+                "┃      |    |\t\t      ┃\n" +
+                "┃      |    O\t\t      ┃\n" +
+                "┃      |   <|>            ┃\n" +
+                "┃      |   / \\            ┃\n" +
+                "┃      |                  ┃\n" +
+                "┃     / \\                 ┃\n" +
+                "┃_________________________┃");
+    }
     System.out.println("Вы проиграли! Удачи в следующий раз!!");
 }
 
