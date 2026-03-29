@@ -45,7 +45,7 @@ void main() {
             }
         }
         if (!(correctLettersCount < gameWord.length())) {
-            System.out.println("Поздравляю! Вы выиграли!!");
+            System.out.println("ПОЗДРАВЛЯЮ! ВЫ ВЫИГРАЛИ!!");
         } else
             printHangman(mistakesCount);
     }
@@ -127,17 +127,28 @@ private static void printHangman(int mistakesCount) {
                 "┃      |                  ┃\n" +
                 "┃     / \\                 ┃\n" +
                 "┃_________________________┃");
+        System.out.println("Вы проиграли! Удачи в следующий раз!!");
     }
-    System.out.println("Вы проиграли! Удачи в следующий раз!!");
 }
 
 
-private static String getGameWord() {
-    String[] hiddenWord = new String[]{"Машина", "Сосиска", "Страдание"};  // Как сделать большой удобный список слов без подключений внешних файлов?
+private static String getGameWord()  {
+    String bookLink = "src/Words";
+    String line;
+    int count = 0;
     Random random = new Random();
-    int randomIndex = random.nextInt(0, 3);
-    String gameWord = hiddenWord[randomIndex];
-    return gameWord.toLowerCase();
+    int randomIndex = random.nextInt(0, 100);
+    try (BufferedReader br = new BufferedReader(new FileReader(bookLink))) {
+        while ((line = br.readLine()) != null) {
+            count++;
+            if (count == randomIndex) break;
+        }
+    } catch (FileNotFoundException e) {
+        throw new RuntimeException(e);
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+    return line.toLowerCase();
 }
 
 private static void printGameWord(String gameWord, char[] gameWordChars) {
