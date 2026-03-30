@@ -1,9 +1,8 @@
-import java.sql.SQLOutput;
 
 void main() {
     while (true) {
-        if (!(gameStart())){
-            break;                  // выход из игры (IDEA почем то ругается на параметр a)
+        if (!(gameStart())) {
+            break;
         }
         int mistakesCount = 0;
         String gameWord = getGameWord();
@@ -50,7 +49,8 @@ void main() {
             printHangman(mistakesCount, gameWord);
     }
 }
-private static void printHangman(int mistakesCount,String gameWord) {
+
+private static void printHangman(int mistakesCount, String gameWord) {
     switch (mistakesCount) {
         case (0):
             System.out.println(" _________________________\n" +
@@ -135,7 +135,7 @@ private static void printHangman(int mistakesCount,String gameWord) {
     }
 }
 
-private static String getGameWord()  {
+private static String getGameWord() {
     String bookLink = "src/Words";
     String line;
     int count = 0;
@@ -165,16 +165,16 @@ private static void printGameWord(String gameWord, char[] gameWordChars) {
 public static boolean gameStart() {
     System.out.println(
             "╔═════════════════════════════════════════════════════════════════════╗\n" +
-            "║                                                                     ║\n" +
-            "║    ██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗ ║\n" +
-            "║    ██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗████╗  ██║ ║\n" +
-            "║    ███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║██╔██╗ ██║ ║\n" +
-            "║    ██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║ ║\n" +
-            "║    ██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║ ║\n" +
-            "║    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ║\n" +
-            "║                                                                     ║\n" +
-            "║                      CLASSIC GAME                                   ║\n" +
-            "╚═════════════════════════════════════════════════════════════════════╝\n" );
+                    "║                                                                     ║\n" +
+                    "║    ██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗ ║\n" +
+                    "║    ██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗████╗  ██║ ║\n" +
+                    "║    ███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║██╔██╗ ██║ ║\n" +
+                    "║    ██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║ ║\n" +
+                    "║    ██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║ ║\n" +
+                    "║    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ║\n" +
+                    "║                                                                     ║\n" +
+                    "║                      CLASSIC GAME                                   ║\n" +
+                    "╚═════════════════════════════════════════════════════════════════════╝\n");
     System.out.println("Добро пожаловать! Желаете начать игру? (введите start/stop)");
     Scanner console = new Scanner(System.in);
     String answer = console.nextLine();
@@ -188,7 +188,7 @@ public static boolean gameStart() {
     } else return false;
 }
 
-public static void maskWord(String gameWord, char[] gameWordChars){
+public static void maskWord(String gameWord, char[] gameWordChars) {
     for (int i = 0; i < gameWord.length(); i++) {
         gameWordChars[i] = '_';
     }
