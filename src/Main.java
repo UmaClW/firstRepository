@@ -1,7 +1,9 @@
+import org.w3c.dom.ls.LSOutput;
 
 void main() {
     while (true) {
-        if (!(gameStart())) {
+        Scanner console = new Scanner(System.in);
+        if (!(gameStart(console))) {
             break;
         }
         int mistakesCount = 0;
@@ -13,10 +15,13 @@ void main() {
         int correctLettersCount = 0;
         char[] inputLetters = new char[33];
         int k = 0;
-        Scanner console = new Scanner(System.in);
         while (correctLettersCount < gameWord.length() && mistakesCount < 6) {
-            System.out.print("Выберите букву: ");
+            System.out.println("Введите букву: ");
             String guessLine = console.nextLine();
+            while (guessLine.isEmpty()) {
+                    System.out.println("Пожалуйста введите букву!");
+                    guessLine = console.nextLine();
+                }
             char guessLetter = guessLine.toLowerCase().charAt(0);
             boolean containsLetter = gameWord.toLowerCase().contains(guessLine.toLowerCase());
             if (containsLetter) {
@@ -162,7 +167,7 @@ private static void printGameWord(String gameWord, char[] gameWordChars) {
     System.out.println("\n");
 }
 
-public static boolean gameStart() {
+public static boolean gameStart(Scanner console) {
     System.out.println(
             "╔═════════════════════════════════════════════════════════════════════╗\n" +
                     "║                                                                     ║\n" +
@@ -176,7 +181,6 @@ public static boolean gameStart() {
                     "║                      CLASSIC GAME                                   ║\n" +
                     "╚═════════════════════════════════════════════════════════════════════╝\n");
     System.out.println("Добро пожаловать! Желаете начать игру? (введите start/stop)");
-    Scanner console = new Scanner(System.in);
     String answer = console.nextLine();
     String lowRegisterAnswer = answer.toLowerCase();
     String startAnswer = "start";
